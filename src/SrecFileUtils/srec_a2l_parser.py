@@ -161,8 +161,15 @@ class SrecFileParser:
                 'Value': value
             })
         df = pd.DataFrame(data)
-        df.to_excel(output_excel, index=False)
+        if output_excel.endswith('.xlsx'):
+            df.to_excel(output_excel, index=False)
+        
+        if output_excel.endswith('.csv'):
+            df.to_csv(output_excel, index=False)
+            
         print(f"Parameters exported to {output_excel}")
+        
+    
 
     def import_parameters_from_excel(self, input_excel: str) -> None:
         df = pd.read_excel(input_excel)
