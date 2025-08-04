@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+venv/
+.env
+# *.mot
+# *.a2l
+# *.xlsx

@@ -1,0 +1,3 @@
+pandas
+hexformat
+a2lparser @ git+https://github.com/mrom1/a2lparser.git@main
