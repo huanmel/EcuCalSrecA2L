@@ -11,13 +11,22 @@ pip install -r requirements.txt
 ## Usage
 
 ```python
-from ecucalsreca2l.parser import SrecA2LParser
+from SrecFileUtils.srec_a2l_parser import SrecFileParser
 
-parser = SrecA2LParser('path/to/firmware.mot', 'path/to/ecu.a2l', byte_order='big')
-value = parser.get_parameter_value('SnsrPLo_FilTiCon')
-print(f"Value: {value}")
-parser.set_parameter_value('SnsrPLo_FilTiCon', 50.0)
-parser.save_srec('path/to/modified_firmware.mot')
+srec_path = r'data\MOT_CAL_FILE.mot'
+a2l_path = r'data\A2L_MAP_FILE.a2l'
+output_srec_path = r'data\export\MOT_CAL_FILE_modified.mot'
+var_name = 'SnsrTBattCoolt_RMapX'
+byte_order = 'big'
+parser = SrecFileParser(srec_path, a2l_path, byte_order=byte_order)
+value = parser.get_parameter_value(var_name)
+print(f"Parameter {var_name} at address {parser.chars_dict[var_name]['Address']}, "
+f"type: {parser.chars_dict[var_name]['Deposit_Ref']}, value: {value}")
+new_value = 50.0
+parser.set_parameter_value(var_name, new_value)
+print(f"Updated {var_name} to {new_value}")
+parser.save_srec(output_srec_path)
+parser.export_parameters_to_excel('data\export\parameters.xlsx')
 ```
 
 ## Future Features
