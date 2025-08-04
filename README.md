@@ -2,6 +2,13 @@
 
 A Python utility for automotive ECU calibration, enabling parsing and modification of Motorola S-record (SREC) and A2L files. Supports reading and updating parameter values, with planned features for a command-line interface and Excel import/export.
 
+## TODO
+* [x] import from a2l and mot
+* [x] export to csv, excel
+* [-] edit values, import from csv, excel
+* [ ] export to  mot
+* [ ] export only subset of params
+
 ## Installation
 
 ```bash
